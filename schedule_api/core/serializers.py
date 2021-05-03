@@ -17,11 +17,11 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        models = Schedule
+        model = Schedule
         fields = ["schedule_date", "schedule_time", "title", "doctor"]
 
 
 class DoctorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        models = Doctor
+        model = Doctor
         fields = ["name", "expertise", "schedule_work_time"]
