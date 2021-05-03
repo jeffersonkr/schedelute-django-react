@@ -27,5 +27,8 @@ class Doctor(models.Model):
     )
     schedule_work_time = JSONField()
 
-    def _repr_(self):
+    def __repr__(self):
+        return self.name
+
+    def __str__(self):
         return self.name
