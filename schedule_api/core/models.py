@@ -3,8 +3,8 @@ from django.utils.translation import gettext_lazy as _
 from django.db.models import JSONField
 
 
-class Schedelute(models.Model):
-    date = models.DateField()
+class Schedule(models.Model):
+    schedule_date = models.DateField()
     schedule_time = models.TimeField()
     title = models.CharField(max_length=100)
     doctor = models.ForeignKey(
@@ -25,4 +25,7 @@ class Doctor(models.Model):
         choices=Expertise.choices,
         default=Expertise.GENERAL,
     )
-    schedule_times = JSONField()
+    schedule_work_time = JSONField()
+
+    def _repr_(self):
+        return self.name
