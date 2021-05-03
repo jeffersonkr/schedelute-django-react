@@ -1,0 +1,42 @@
+version: '3'
+  
+services:
+    api:
+        container_name: schedule_api
+        build: .
+        volumes:
+            - .:/code
+        depends_on:
+            - db
+        ports:
+            - "8000:8000"
+        networks:
+            internal_network:
+                ipv4_address: 172.25.0.10
+
+        restart: on-failure
+        command: "sh docker-entrypoint.sh"
+    db:
+        container_name: schedule_db
+        image: mariadb:latest
+        ports:
+            - "3308:3306"
+        volumes:
+            - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+            - ~/mysql-data:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: "schedule_database"
+            MYSQL_ROOT_PASSWORD: "secret"
+        restart: always
+        command: --init-file /docker-entrypoint-initdb.d/init.sql
+        networks:
+            - internal_network
+networks:
+    internal_network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.25.0.0/16
+
+volumes:
+    mysql-data:
