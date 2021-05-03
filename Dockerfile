@@ -5,4 +5,5 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . /code/
-EXPOSE 5000
+EXPOSE 8000
+RUN apt-get update && apt-get install -y npm
