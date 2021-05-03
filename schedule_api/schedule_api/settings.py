@@ -51,7 +51,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "schedelute_api.urls"
+ROOT_URLCONF = "schedule_api.urls"
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "schedelute_api.wsgi.application"
+WSGI_APPLICATION = "schedule_api.wsgi.application"
 
 
 # Database
