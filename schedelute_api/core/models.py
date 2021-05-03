@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django_mysql.models import JSONField
+from django.db.models import JSONField
 
 
 class Schedelute(models.Model):
