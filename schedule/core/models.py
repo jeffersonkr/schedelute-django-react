@@ -15,13 +15,13 @@ class Schedule(models.Model):
 
 class Doctor(models.Model):
     class Expertise(models.TextChoices):
-        GENERAL = "GNL", _("Clínico Geral")
-        PEDIATRICIAN = "PDN", _("Pediatra")
-        CARDIOLOGIST = "CDT", _("Cardiologista")
+        GENERAL = "Clínico Geral"
+        PEDIATRICIAN = "Pediatra"
+        CARDIOLOGIST = "Cardiologista"
 
     name = models.CharField(max_length=50)
     expertise = models.CharField(
-        max_length=3,
+        max_length=50,
         choices=Expertise.choices,
         default=Expertise.GENERAL,
     )

@@ -12,7 +12,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch("api/doctors")
+        fetch("api/schedules")
             .then(response => {
                 if (response.status > 400) {
                     return this.setState(() => {
@@ -33,15 +33,22 @@ class App extends Component {
 
     render() {
         return (
-            <ul>
-                {this.state.data.map(doctor => {
+            <section>
+                {this.state.data.map(schedules => {
                     return (
-                        <li key={doctor.id}>
-                            {doctor.name}
-                        </li>
+                        <div class="card">
+                            <div class="card-header">
+                                {schedules.schedule_date} - {schedules.schedule_time}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{schedules.title}</h5>
+                                <p class="card-text">{schedules.schedule_date} - {schedules.schedule_time}</p>
+                                <p class="card-text">Dr. {schedules.doctor_name} - {schedules.doctor_expertise}</p>
+                            </div>
+                        </div>
                     );
                 })}
-            </ul>
+            </section >
         );
     }
 }
